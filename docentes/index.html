@@ -416,6 +416,13 @@ main{transform-origin:50% 20vh}
   .js:not(.opened) main{transform:none;filter:none}
   .grid7 .d.big path{stroke-dashoffset:0}
 }
+
+/* Versión docentes: abre directo, sin pantalla de entrada ni confirmación */
+#intro,.imed{display:none!important}
+.js:not(.opened) main{transform:none!important;filter:none!important}
+#confirmar{display:none!important}
+.letter .body{text-align:center;justify-items:center}
+.letter .body p{max-width:38ch}
 </style>
 
 </head>
@@ -443,7 +450,7 @@ main{transform-origin:50% 20vh}
 <main id="main">
   <header class="wrap hero" id="hero">
     <span class="k fade-in" style="--d:0">Décimo grado · Promo 2027</span>
-    <p class="lead-it fade-in" style="--d:1">Queridas rectora, coordinadora y docentes</p>
+    <p class="lead-it fade-in" style="--d:1">Querid@s rectora, coordinadora y docentes</p>
     <div class="crest"><svg viewBox="0 0 200 200" aria-hidden="true"><defs><path id="rc" d="M100 100 m-88 0 a88 88 0 1 1 176 0 a88 88 0 1 1 -176 0"/></defs><text><textPath href="#rc">FUERZA · UNIDAD · FAMILIA · PROMOCIÓN LYNX · FUERZA · UNIDAD · FAMILIA · </textPath></text></svg><div class="emb" role="img" aria-label="Emblema del lince"></div></div>
     <h1 class="name" aria-label="Lynx"><span class="ch" aria-hidden="true"><span style="--i:0">L</span></span><span class="ch" aria-hidden="true"><span style="--i:1">y</span></span><span class="ch" aria-hidden="true"><span style="--i:2">n</span></span><span class="ch" aria-hidden="true"><span style="--i:3">x</span></span></h1>
     <p class="year fade-in" style="--d:2">2026</p>
@@ -470,14 +477,14 @@ main{transform-origin:50% 20vh}
       <span class="k">Una carta para ustedes</span>
     </div>
     <div class="letter">
-      <p class="dear rv">Queridas rectora, coordinadora y docentes:</p>
+      <p class="dear rv">Querid@s rectora, coordinadora y docentes:</p>
       <p class="lead" id="lead">Detrás de cada estudiante que hoy se despide hay un maestro que *creyó* en él. Ustedes fueron *guía*, ejemplo y *familia* en este camino.</p>
       <div class="body">
         <p class="rv">Durante estos años acompañaron a la Promoción Lynx con paciencia, exigencia y cariño. Estuvieron en las clases, en las evaluaciones, en los actos y también en los días difíciles, enseñando mucho más que una materia: enseñaron a ser buenas personas.</p>
         <p class="rv">Hoy esta promoción cierra su etapa en el colegio y no podemos imaginar esta despedida sin ustedes. Cada logro de ellos lleva también su huella.</p>
         <p class="rv">Por eso, con todo respeto y gratitud, los invitamos a acompañarnos y a compartir una tarde llena de recuerdos, brindis y alegría.</p>
       </div>
-      <div class="sign rv"><span class="k">Con gratitud y respeto</span><span class="n">Promo 2027</span><span class="k" style="color:var(--gold-l)">Décimo grado</span></div>
+      <div class="sign rv"><span class="k">Con gratitud y cariño</span><span class="n">Promo 2027</span><span class="k" style="color:var(--gold-l)">Décimo grado</span></div>
     </div>
   </section>
 
@@ -864,7 +871,10 @@ main{transform-origin:50% 20vh}
   })();
 
   tick(); onScroll();
-  if(location.hash){ openIntro(); }
+  /* abre directo: sin pantalla de entrada */
+  opened = true; dRun = false;
+  intro.classList.add('gone'); imed.classList.add('gone');
+  root.classList.add('opened'); hero.classList.add('go');
 })();
 </script>
 
